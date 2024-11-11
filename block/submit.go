@@ -80,6 +80,7 @@ func SubmitLoopInner(
 
 			types.RollappPendingSubmissionsSkewBytes.Set(float64(pendingBytes.Load()))
 			types.RollappPendingSubmissionsSkewBlocks.Set(float64(unsubmittedBlocks()))
+			types.RollappPendingSubmissionsSkewBatches.Set(float64(pendingBytes.Load() / maxBatchBytes))
 			submitter.Nudge()
 		}
 	})
